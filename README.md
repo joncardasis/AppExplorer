@@ -1,8 +1,9 @@
 <img src="http://i.imgur.com/gVyy5D1.png" height="85">
 # AppExplorer
 
-AppExplorer demos the use of some of Apple's private frameworks. The application is capable of retrieving all of the devices installed apps as well as their icons.
+AppExplorer demos the use of some of Apple's private frameworks. The application is capable of retrieving all of the devices installed apps as well as their icons and can launch any of the applications.
 
+<img src="http://i.imgur.com/H542zX3.png" width=500>
 
 ## Theory 
 Each application on iOS is a type of `LSApplicationProxy`. This class contains a number of defining properties associated with each applicaton. `LSApplicationWorkspace` manages these application proxies, controlling the launch of the application, installation, and deletion.
@@ -25,5 +26,5 @@ let installedApps = SystemApplicationManager.sharedManager.allInstalledApplicati
 ```
 Thats about it. Now you can get a number of properties from each of the SystemApplication objects in the array.
 
-<div style="text-align: center"><img src="http://i.imgur.com/H542zX3.png" width=500></div>
+
 
