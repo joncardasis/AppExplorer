@@ -17,34 +17,10 @@
 
 
 @interface Invocator : NSObject
-+ (nullable UIImage*) applicationIconImageForBundleIdentifier:(nonnull NSString*)bundleID format:(int)format scale:(double)scale;
 + (nullable id) performClassSelector:(nonnull SEL)selector target:(nonnull id)target args: (nullable NSArray*)args;
 @end
 
 @implementation Invocator
-
-+ (nullable UIImage*) applicationIconImageForBundleIdentifier:(nonnull NSString*)bundleID format:(int)format scale:(double)scale {
-    SEL selector = @selector(_applicationIconImageForBundleIdentifier:format:scale:);
-    
-    NSMethodSignature *methodSignature = [UIImage methodSignatureForSelector:selector];
-    NSInvocation *methodInvocation = [NSInvocation invocationWithMethodSignature:methodSignature];
-    
-    [methodInvocation setTarget:[UIImage class]]; //Since we're calling a static method we need a class instance
-    [methodInvocation setSelector: selector];
-    
-    [methodInvocation setArgument:&bundleID atIndex:2];
-    [methodInvocation setArgument:&format atIndex:3];
-    [methodInvocation setArgument:&scale atIndex:4];
-    
-    //[myInvocation retainArguments];	
-    [methodInvocation invoke];
-    UIImage * __unsafe_unretained image;
-    [methodInvocation getReturnValue:&image];
-    
-    return image;
-}
-
-
 /*
  Will perform a selector on a Class for any number of args.
 */

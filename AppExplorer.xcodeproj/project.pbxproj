@@ -19,6 +19,7 @@
 		35557AF11D3405630033C3C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35557AEF1D3405630033C3C6 /* Main.storyboard */; };
 		35557AF31D3405630033C3C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35557AF21D3405630033C3C6 /* Assets.xcassets */; };
 		35557AF61D3405630033C3C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35557AF41D3405630033C3C6 /* LaunchScreen.storyboard */; };
+		35AD7BF01D5A5F2900335114 /* Embeddable in Resources */ = {isa = PBXBuildFile; fileRef = 35AD7BEF1D5A5F2900335114 /* Embeddable */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		35557AF21D3405630033C3C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		35557AF51D3405630033C3C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		35557AF71D3405630033C3C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		35AD7BEF1D5A5F2900335114 /* Embeddable */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Embeddable; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 				35557B1D1D3407DA0033C3C6 /* Private Headers */,
 				350613271D36DA6A003AAFC2 /* Controllers */,
 				3525A57E1D3677F0003606B1 /* Views */,
+				35AD7BEF1D5A5F2900335114 /* Embeddable */,
 				35557AF21D3405630033C3C6 /* Assets.xcassets */,
 				35557AF71D3405630033C3C6 /* Info.plist */,
 				350613281D36DF15003AAFC2 /* DirectoryReader.h */,
@@ -193,6 +196,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				35557AF61D3405630033C3C6 /* LaunchScreen.storyboard in Resources */,
+				35AD7BF01D5A5F2900335114 /* Embeddable in Resources */,
 				35557AF31D3405630033C3C6 /* Assets.xcassets in Resources */,
 				3525A57D1D3677EB003606B1 /* AppTableViewCell.xib in Resources */,
 				35557AF11D3405630033C3C6 /* Main.storyboard in Resources */,
