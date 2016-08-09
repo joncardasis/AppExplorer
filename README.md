@@ -17,14 +17,28 @@ I created two classes `SystemApplicationManager` and `SystemApplication` which a
 
 
 ## Do it yourself!
+###Standard Install
+*This method is shown in the demo project.*
+
 1. Link the framework `MobileCoreServices.framework`.
 2. Copy the `Private Headers` folder to your project.
-3. Copy the `SystemApplicationManager` and `SystemApplication` classes to your project.
+3. Copy the `SystemApplicationManager.swift` and `SystemApplication.swift` classes to your project.
 4. Get Swifty with it!
 ```Swift
 let installedApps = SystemApplicationManager.sharedManager.allInstalledApplications()
 ```
 Thats about it. Now you can get a number of properties from each of the SystemApplication objects in the array.
 
+###Non-Framework Install
+*This method doesn't require any external frameworks or private headers to be imported.*
+
+1. Copy the `EmbeddableSystemApplicationManager.swift` and `Invocator.m` classes from the Embeddable folder as well as the `SystemApplication.swift` class to your project.
+2. Add `#import "Invocator.m"` to your bridging header.
+3. Secretly get data from installed applications!
+```Swift
+let installedApps = EmbeddableSystemApplicationManager.sharedManager.allInstalledApplications()
+```
+You can test this by replacing occurances of SystemApplicationManager with EmbeddableSystemApplicationManager and unlinking the framework in the demo project.
 
 
+\* Note that EmbeddableSystemApplicationManager and SystemApplicationManager share the exact same functionality.
