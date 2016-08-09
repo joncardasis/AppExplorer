@@ -11,10 +11,6 @@
 #import <UIKit/UIKit.h>
 @import Foundation;
 
-@protocol UIImage_Private_Interface <NSObject>
-+ (nullable id)_applicationIconImageForBundleIdentifier:(nonnull id)arg1 format:(int)arg2 scale:(double)arg3;
-@end
-
 
 @interface Invocator : NSObject
 + (nullable id) performClassSelector:(nonnull SEL)selector target:(nonnull id)target args: (nullable NSArray*)args;
