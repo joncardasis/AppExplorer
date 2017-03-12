@@ -18,10 +18,10 @@ class AppsTableViewController: UITableViewController {
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 0, green: 188/255.0, blue: 212/255.0, alpha: 1)
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor(), NSFontAttributeName : UIFont(name: "Helvetica-Bold", size: 18)!]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white, NSFontAttributeName : UIFont(name: "Helvetica-Bold", size: 18)!]
         
-        tableView.registerNib(UINib(nibName: "AppTableViewCell", bundle: nil), forCellReuseIdentifier: "AppCell")
-        tableView.separatorStyle = .None
+        tableView.register(UINib(nibName: "AppTableViewCell", bundle: nil), forCellReuseIdentifier: "AppCell")
+        tableView.separatorStyle = .none
         
         
         // Uncomment the following line to preserve selection between presentations
@@ -46,20 +46,20 @@ class AppsTableViewController: UITableViewController {
 
     
     // MARK: - Table view data source
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return applications.count
     }
 
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("AppCell", forIndexPath: indexPath) as! AppTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AppCell", for: indexPath) as! AppTableViewCell
         
         let application = applications[indexPath.row]
         cell.application = application //associate the app to the cell
@@ -68,7 +68,7 @@ class AppsTableViewController: UITableViewController {
         cell.title.text = application.name ?? "???" //use question marks if appname doesnt exist
         
         
-        if application.type == .System {
+        if application.type == .system {
             cell.typeTag.backgroundColor = cell.typeTag.primaryColor
             cell.typeTag.text = "System"
         } else {
@@ -77,14 +77,14 @@ class AppsTableViewController: UITableViewController {
         }
         
         cell.launchButton.tag = indexPath.row
-        cell.launchButton.addTarget(self, action: #selector(launchAppButtonPressed), forControlEvents: .TouchUpInside)
+        cell.launchButton.addTarget(self, action: #selector(launchAppButtonPressed), for: .touchUpInside)
         
         return cell
     }
     
     //MARK: temporary use to print contents of app from /Applications folder
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        guard let cell = tableView.cellForRowAtIndexPath(indexPath) as? AppTableViewCell else{
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? AppTableViewCell else{
             return
         }
         
@@ -94,8 +94,8 @@ class AppsTableViewController: UITableViewController {
     
     
     //MARK: - Other Functions
-    func launchAppButtonPressed(sender: UIButton){
-        let tappedCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: sender.tag, inSection: 0)) as! AppTableViewCell
+    func launchAppButtonPressed(_ sender: UIButton){
+        let tappedCell = tableView.cellForRow(at: IndexPath(row: sender.tag, section: 0)) as! AppTableViewCell
  
         if let application = tappedCell.application {
             SystemApplicationManager.sharedManager.openApplication(application)

@@ -9,8 +9,8 @@
 import UIKit
 
 enum SystemApplicationType{
-    case System
-    case User
+    case system
+    case user
 }
 
 class SystemApplication: NSObject {
@@ -20,7 +20,7 @@ class SystemApplication: NSObject {
     var executableName: String? //Name of internal payload executable
     var type: SystemApplicationType?
     var signerIdentity: String?
-    var applicationPath: NSURL?
+    var applicationPath: URL?
     var backgroundModes: [String]?
     var icon: UIImage?
     
@@ -38,14 +38,13 @@ class SystemApplication: NSObject {
      Mapping function.
      Pass nil for any parameter not given
     */
-    func map(bundleID
-        bundleID: String?,
+    func map(bundleID: String?,
         name: String?,
         version: String?,
         executableName: String?,
         type: String?,
         signerIdentity: String?,
-        applicationPath: NSURL?,
+        applicationPath: URL?,
         backgroundModes: [String]?,
         icon: UIImage?
         ){
@@ -55,10 +54,10 @@ class SystemApplication: NSObject {
         self.version = version
         self.executableName = executableName
         if type == "System"{
-            self.type = .System
+            self.type = .system
         }
         else{
-            self.type = .User
+            self.type = .user
         }
         self.signerIdentity = signerIdentity
         self.applicationPath = applicationPath

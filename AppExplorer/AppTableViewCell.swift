@@ -20,18 +20,18 @@ class AppTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        separator.fillColor = UIColor(red: 238/255.0, green: 238/255.0, blue: 238/255.0, alpha: 1).CGColor
+        separator.fillColor = UIColor(red: 238/255.0, green: 238/255.0, blue: 238/255.0, alpha: 1).cgColor
         self.layer.addSublayer(separator)
     }
 
     
     override func layoutSubviews() {
-        let separatorFrame = UIEdgeInsetsInsetRect(CGRect(x: 0, y: bounds.height - 2.0/UIScreen.mainScreen().scale, width: bounds.width, height: 2.0/UIScreen.mainScreen().scale), self.separatorInset)
+        let separatorFrame = UIEdgeInsetsInsetRect(CGRect(x: 0, y: bounds.height - 2.0/UIScreen.main.scale, width: bounds.width, height: 2.0/UIScreen.main.scale), self.separatorInset)
         
-        separator.path = UIBezierPath(rect: separatorFrame).CGPath
+        separator.path = UIBezierPath(rect: separatorFrame).cgPath
     }
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
 

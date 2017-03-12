@@ -100,15 +100,15 @@ class EmbeddableSystemApplicationManager: NSObject {
         return applications
     }
     
-    func openApplication(app: SystemApplication) -> Bool {
+    @discardableResult func openApplication(app: SystemApplication) -> Bool {
         if let bundleID = app.bundleID{
             return self.openApplication(bundleID: bundleID)
         }
         return false
     }
     
-    func openApplication(bundleID bundleID: String) -> Bool {
-        if let workspace = workspace where workspace.respondsToSelector(ReversedCall.LSApplicationWorkspace.Selector.openApplicationWithBundleID){
+    @discardableResult func openApplication(bundleID: String) -> Bool {
+        if let workspace = workspace, workspace.respondsToSelector(ReversedCall.LSApplicationWorkspace.Selector.openApplicationWithBundleID){
             if workspace.performSelector(ReversedCall.LSApplicationWorkspace.Selector.openApplicationWithBundleID, withObject: bundleID) != nil{
                 return true //Not entirely accurate, but probably opened
             }

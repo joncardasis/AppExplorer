@@ -10,7 +10,7 @@ import Foundation
 
 class SystemApplicationManager: NSObject {
     static let sharedManager = SystemApplicationManager()
-    private var workspace: LSApplicationWorkspace?
+    fileprivate var workspace: LSApplicationWorkspace?
     
     
     override init() {
@@ -27,7 +27,7 @@ class SystemApplicationManager: NSObject {
         for applicationProxy in installedApplicationProxies {
             
             let bundleIdentifier = applicationProxy.bundleIdentifier
-            let appIcon = self.applicationIconImageForBundleIdentifier(bundleIdentifier)
+            let appIcon = self.applicationIconImageForBundleIdentifier(bundleIdentifier!)
             
             /* Create and map a system application object to LSApplicationProxys variables */
             let app = SystemApplication()
@@ -38,7 +38,7 @@ class SystemApplicationManager: NSObject {
                     type: applicationProxy.applicationType,
                     signerIdentity: applicationProxy.signerIdentity,
                     applicationPath: applicationProxy.dataContainerURL,
-                    backgroundModes: applicationProxy.UIBackgroundModes as? [String],
+                    backgroundModes: applicationProxy.uiBackgroundModes as? [String],
                     icon: appIcon
             )
             
@@ -49,24 +49,24 @@ class SystemApplicationManager: NSObject {
     }
     
     
-    func openApplication(app: SystemApplication) -> Bool {
+    @discardableResult func openApplication(_ app: SystemApplication) -> Bool {
         if let workspace = workspace {
-            return workspace.openApplicationWithBundleID(app.bundleID)
+            return workspace.openApplication(withBundleID: app.bundleID)
         }
         return false
     }
     
-    func openApplication(bundleID bundleID: String) -> Bool {
+    @discardableResult func openApplication(bundleID: String) -> Bool {
         if let workspace = workspace {
-            return workspace.openApplicationWithBundleID(bundleID)
+            return workspace.openApplication(withBundleID: bundleID)
         }
         return false
     }
     
-    func applicationIconImageForBundleIdentifier(bundleID: String) -> UIImage?{
+    func applicationIconImageForBundleIdentifier(_ bundleID: String) -> UIImage?{
         //Format of 2 will return a 62x62 image
-        return UIImage._applicationIconImageForBundleIdentifier(bundleID, format: 2
-            , scale: Double(UIScreen.mainScreen().scale)) as? UIImage
+        return UIImage._applicationIconImage(forBundleIdentifier: bundleID, format: 2
+            , scale: Double(UIScreen.main.scale)) as? UIImage
     }
     
 }

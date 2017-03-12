@@ -10,12 +10,12 @@ import UIKit
 
 @IBDesignable class TagLabel: UILabel {
 
-    @IBInspectable var primaryColor: UIColor = UIColor.lightGrayColor(){
+    @IBInspectable var primaryColor: UIColor = UIColor.lightGray{
         didSet{
-            self.layer.backgroundColor = primaryColor.CGColor
+            self.layer.backgroundColor = primaryColor.cgColor
         }
     }
-    @IBInspectable var secondaryTagColor: UIColor = UIColor.darkGrayColor()
+    @IBInspectable var secondaryTagColor: UIColor = UIColor.darkGray
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,15 +27,15 @@ import UIKit
         self.commonInit()
     }
     
-    private func commonInit(){
+    fileprivate func commonInit(){
         self.layer.masksToBounds = true
-        self.layer.backgroundColor = primaryColor.CGColor
+        self.layer.backgroundColor = primaryColor.cgColor
     }
     
     override func layoutSubviews() {
         self.layer.cornerRadius = self.bounds.height/2
-        self.font = UIFont(descriptor: self.font.fontDescriptor(), size: self.bounds.height/2)
-        self.textAlignment = .Center
+        self.font = UIFont(descriptor: self.font.fontDescriptor, size: self.bounds.height/2)
+        self.textAlignment = .center
     }
     
 
