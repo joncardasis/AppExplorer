@@ -1,4 +1,5 @@
 <img src="http://i.imgur.com/gVyy5D1.png" height="85">
+
 # AppExplorer
 
 AppExplorer demos the use of some of Apple's private frameworks. The application is capable of retrieving all of the devices installed apps as well as their icons and can launch any of the applications.
@@ -17,7 +18,7 @@ I created two classes `SystemApplicationManager` and `SystemApplication` which a
 
 
 ## Do it yourself!
-###Standard Install
+### Standard Install
 *This method is shown in the demo project.*
 
 1. Link the framework `MobileCoreServices.framework`.
@@ -29,7 +30,7 @@ let installedApps = SystemApplicationManager.sharedManager.allInstalledApplicati
 ```
 Thats about it. Now you can get a number of properties from each of the SystemApplication objects in the array.
 
-###Non-Framework Install
+### Non-Framework Install
 *This method doesn't require any external frameworks or private headers to be imported.*
 
 1. Copy the `EmbeddableSystemApplicationManager.swift` and `Invocator.m` classes from the Embeddable folder as well as the `SystemApplication.swift` class to your project.
